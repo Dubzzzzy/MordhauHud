@@ -121,7 +121,7 @@ namespace MordhauHud
 
         private CircleMenuCentralItem CreateCircleMenuCentralItem(ICommand command)
         {
-            var textBlock = new TextBlock { Text = command.Name };
+            var textBlock = new TextBlock { Text = command.Name, Margin = new Thickness(0, 5, 0, 0) };
             var circleMenuCentralItem = new CircleMenuCentralItem { Content = textBlock };
             circleMenuCentralItem.MouseEnter += (sender, args) => SelectVoiceCommand(command);
 
