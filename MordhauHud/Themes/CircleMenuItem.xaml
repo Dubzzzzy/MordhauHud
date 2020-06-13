@@ -14,8 +14,8 @@
 
             <!-- CircleMenuItem style when hovered -->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="EdgeBackground" Value="#A0332100"/>
-                <Setter Property="Background" Value="#9F998766"/>
+                <Setter Property="EdgeBackground" Value="#A0222100"/>
+                <Setter Property="Background" Value="#9FAB8032"/>
                 <Setter Property="Panel.ZIndex" Value="10"/>
                 <Setter Property="FontSize" Value="19"/>
             </Trigger>
@@ -27,7 +27,7 @@
         <Setter Property="Height" Value="400"/>
         <Setter Property="CenterX" Value="200"/>
         <Setter Property="CenterY" Value="200"/>
-        <Setter Property="InnerRadius" Value="30"/>
+        <Setter Property="InnerRadius" Value="35"/>
         <Setter Property="OuterRadius" Value="200"/>
         <Setter Property="Background" Value="#9F000000"/>
         <Setter Property="Foreground" Value="#FFEDBB"/>
