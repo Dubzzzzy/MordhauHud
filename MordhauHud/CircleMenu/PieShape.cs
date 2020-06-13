@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -10,7 +8,7 @@ namespace MordhauHud.CircleMenu
     internal class PieShape : Shape
     {
         public static readonly DependencyProperty InnerRadiusProperty =
-            DependencyProperty.Register("InnerRadius", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(InnerRadius), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double InnerRadius
@@ -20,7 +18,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty OuterRadiusProperty =
-            DependencyProperty.Register("OuterRadius", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(OuterRadius), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double OuterRadius
@@ -30,7 +28,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty PaddingProperty =
-            DependencyProperty.Register("Padding", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(Padding), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double Padding
@@ -40,7 +38,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty PushOutProperty =
-            DependencyProperty.Register("PushOut", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(PushOut), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double PushOut
@@ -50,7 +48,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty AngleDeltaProperty =
-            DependencyProperty.Register("AngleDelta", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(AngleDelta), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double AngleDelta
@@ -60,7 +58,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty StartAngleProperty =
-            DependencyProperty.Register("StartAngle", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(StartAngle), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double StartAngle
@@ -70,7 +68,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty CenterXProperty =
-            DependencyProperty.Register("CenterX", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(CenterX), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double CenterX
@@ -80,7 +78,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty CenterYProperty =
-            DependencyProperty.Register("CenterY", typeof(double), typeof(PieShape),
+            DependencyProperty.Register(nameof(CenterY), typeof(double), typeof(PieShape),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double CenterY
@@ -99,8 +97,7 @@ namespace MordhauHud.CircleMenu
             get
             {
                 // Creates a StreamGeometry for describing the shape
-                var geometry = new StreamGeometry();
-                geometry.FillRule = FillRule.EvenOdd;
+                var geometry = new StreamGeometry { FillRule = FillRule.EvenOdd };
 
                 using (var context = geometry.Open())
                 {

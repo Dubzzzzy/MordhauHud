@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace MordhauHud
+﻿namespace MordhauHud.Commands
 {
     public interface ICommand
     {
-        string Name { get; set; }
+        string Name { get; }
 
         void Execute();
     }

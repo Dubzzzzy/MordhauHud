@@ -3,11 +3,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace MordhauHud
 {
-
     public static class WinApi
     {
         private const int KEYEVENTF_EXTENDEDKEY = 0x0001;
@@ -35,7 +33,7 @@ namespace MordhauHud
         private const int LWA_COLORKEY = 0x1;
 
         public static IntPtr FindWindow(string windowName) =>
-            Process.GetProcesses().SingleOrDefault(x => x.MainWindowTitle.Contains(windowName))?.MainWindowHandle ?? default;
+            Process.GetProcesses().FirstOrDefault(x => x.MainWindowTitle.Contains(windowName))?.MainWindowHandle ?? default;
 
         public static void SetTransparent(IntPtr handle)
         {
@@ -87,6 +85,12 @@ namespace MordhauHud
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
 
+        public static Rect GetWindowRect(IntPtr hWnd)
+        {
+            GetWindowRect(hWnd, out var rect);
+            return rect;
+        }
+
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool SetLayeredWindowAttributes(IntPtr hWnd, uint crKey, byte bAlpha, uint dwFlags);
 
@@ -96,13 +100,6 @@ namespace MordhauHud
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
         private static extern IntPtr SetWindowLongPtr64(HandleRef hWnd, int nIndex, IntPtr dwNewLong);
 
-        /// <summary>
-        /// Retrieves the cursor's position, in screen coordinates.
-        /// </summary>
-        /// <see>See MSDN documentation for further information.</see>
-        //[DllImport("user32.dll")]
-        //public static extern bool GetCursorPos(out Point lpPoint);
-
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool CloseHandle(IntPtr hObject);
@@ -111,16 +108,33 @@ namespace MordhauHud
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool IsIconic(IntPtr hWnd);
 
-        public static bool ReadProcessMemory(IntPtr handle, IntPtr baseAddress, byte[] buffer)
-        {
-            return ReadProcessMemory(handle, baseAddress, buffer, buffer.Length, out _);
-        }
+        public static bool ReadProcessMemory(IntPtr handle, IntPtr baseAddress, byte[] buffer) => 
+            ReadProcessMemory(handle, baseAddress, buffer, buffer.Length, out _);
 
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool ReadProcessMemory(IntPtr hWnd, IntPtr baseAddr, byte[] buffer, int size, out IntPtr bytesRead);
 
         [DllImport("user32.dll")]
         public static extern bool SetCursorPos(int x, int y);
+
+        public static bool SetCursorPos(double x, double y) =>
+            SetCursorPos((int)x, (int)y);
+
+
+        [DllImport("user32.dll")]
+        public static extern uint keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+
+        public static void KeyDown(Keys key) =>
+            keybd_event((byte)key, 0, KEYEVENTF_EXTENDEDKEY, 0);
+
+        public static void KeyUp(Keys key) =>
+            keybd_event((byte)key, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+
+        public static void KeyPress(Keys key)
+        {
+            KeyDown(key);
+            KeyUp(key);
+        }
 
         public static void KeyPress(params Keys[] keys)
         {
@@ -129,21 +143,6 @@ namespace MordhauHud
                 KeyPress(key);
             }
         }
-
-        public static void KeyPress(Keys key)
-        {
-            KeyDown(key);
-            KeyUp(key);
-        }
-
-        public static void KeyDown(Keys key) =>
-            WinApi.keybd_event((byte)key, 0, KEYEVENTF_EXTENDEDKEY, 0);
-
-        public static void KeyUp(Keys key) =>
-            WinApi.keybd_event((byte)key, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
-
-        [DllImport("user32.dll")]
-        public static extern uint keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
 
         [DllImport("user32.dll")]
         public static extern ushort GetKeyState(Keys vKey);

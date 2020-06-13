@@ -15,6 +15,12 @@ namespace MordhauHud
 
         public event Action<Keys> KeyUp;
 
+        public KeyboardListener()
+        {
+            KeyDown += key => _pressedKeys.Add(key);
+            KeyUp += key => _pressedKeys.Remove(key);
+        }
+
         public void ListenKey(Keys key)
         {
             _observedKeys.Add(key);
@@ -22,21 +28,23 @@ namespace MordhauHud
 
         public void Update()
         {
-            foreach (var observerKey in _observedKeys)
+            foreach (var key in _observedKeys)
             {
-                var keyState = WinApi.GetKeyState(observerKey);
+                var keyWasPressed = _pressedKeys.Contains(key);
+                var keyIsDown = ((WinApi.GetKeyState(key) >> 15) & 1) == 1;
+                var keyIsPressed = keyIsDown && !keyWasPressed;
+                var keyIsReleased = !keyIsDown && keyWasPressed;
 
-                if (((keyState >> 15) & 1) == 1 && !_pressedKeys.Contains(observerKey))
+                if (keyIsPressed)
                 {
-                    _pressedKeys.Add(observerKey);
-                    KeyDown?.Invoke(observerKey);
+                    KeyDown?.Invoke(key);
                 }
 
-                if (((keyState >> 15) & 1) == 0 && _pressedKeys.Contains(observerKey))
+                else if (keyIsReleased)
                 {
-                    _pressedKeys.Remove(observerKey);
-                    KeyUp?.Invoke(observerKey);
+                    KeyUp?.Invoke(key);
                 }
+
             }
         }
     }

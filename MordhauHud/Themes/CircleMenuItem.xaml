@@ -12,18 +12,12 @@
 
         <Style.Triggers>
 
-            <!-- CircleMenuItem style when overed -->
+            <!-- CircleMenuItem style when hovered -->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="EdgeBackground" Value="#AF5A2617"/>
-                <Setter Property="Background" Value="#AF5A2617"/>
+                <Setter Property="EdgeBackground" Value="#A0332100"/>
+                <Setter Property="Background" Value="#9F998766"/>
                 <Setter Property="Panel.ZIndex" Value="10"/>
                 <Setter Property="FontSize" Value="19"/>
-            </Trigger>
-
-            <!-- CircleMenuItem style when disabled -->
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="EdgeBackground" Value="#F3F3F3"/>
-                <Setter Property="Foreground" Value="#AFAFAF"/>
             </Trigger>
 
         </Style.Triggers>

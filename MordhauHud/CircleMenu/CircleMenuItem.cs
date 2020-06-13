@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MordhauHud.CircleMenu
 {
@@ -26,7 +17,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty CountProperty =
-            DependencyProperty.Register("Count", typeof(int), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(Count), typeof(int), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure, UpdateItemRendering));
 
         public int Count
@@ -36,7 +27,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty HalfShiftedProperty =
-            DependencyProperty.Register("HalfShifted", typeof(bool), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(HalfShifted), typeof(bool), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure, UpdateItemRendering));
 
         public bool HalfShifted
@@ -46,7 +37,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty CenterXProperty =
-            DependencyProperty.Register("CenterX", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(CenterX), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double CenterX
@@ -56,7 +47,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty CenterYProperty =
-            DependencyProperty.Register("CenterY", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(CenterY), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double CenterY
@@ -66,7 +57,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty OuterRadiusProperty =
-            DependencyProperty.Register("OuterRadius", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(OuterRadius), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double OuterRadius
@@ -76,7 +67,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty InnerRadiusProperty =
-            DependencyProperty.Register("InnerRadius", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(InnerRadius), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double InnerRadius
@@ -90,7 +81,7 @@ namespace MordhauHud.CircleMenu
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static readonly DependencyProperty ContentRadiusProperty =
-            DependencyProperty.Register("ContentRadius", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(ContentRadius), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double ContentRadius
@@ -100,7 +91,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty EdgeOuterRadiusProperty =
-            DependencyProperty.Register("EdgeOuterRadius", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(EdgeOuterRadius), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double EdgeOuterRadius
@@ -110,7 +101,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty EdgeInnerRadiusProperty =
-            DependencyProperty.Register("EdgeInnerRadius", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(EdgeInnerRadius), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double EdgeInnerRadius
@@ -120,7 +111,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty EdgePaddingProperty =
-            DependencyProperty.Register("EdgePadding", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(EdgePadding), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double EdgePadding
@@ -130,7 +121,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty EdgeBackgroundProperty =
-            DependencyProperty.Register("EdgeBackground", typeof(Brush), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(EdgeBackground), typeof(Brush), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public Brush EdgeBackground
@@ -140,7 +131,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty EdgeBorderThicknessProperty =
-            DependencyProperty.Register("EdgeBorderThickness", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(EdgeBorderThickness), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double EdgeBorderThickness
@@ -150,7 +141,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty EdgeBorderBrushProperty =
-            DependencyProperty.Register("EdgeBorderBrush", typeof(Brush), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(EdgeBorderBrush), typeof(Brush), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public Brush EdgeBorderBrush
@@ -160,7 +151,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty ArrowBackgroundProperty =
-            DependencyProperty.Register("ArrowBackground", typeof(Brush), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(ArrowBackground), typeof(Brush), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public Brush ArrowBackground
@@ -170,7 +161,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty ArrowBorderThicknessProperty =
-            DependencyProperty.Register("ArrowBorderThickness", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(ArrowBorderThickness), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double ArrowBorderThickness
@@ -180,7 +171,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty ArrowBorderBrushProperty =
-            DependencyProperty.Register("ArrowBorderBrush", typeof(Brush), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(ArrowBorderBrush), typeof(Brush), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public Brush ArrowBorderBrush
@@ -190,7 +181,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty ArrowWidthProperty =
-            DependencyProperty.Register("ArrowWidth", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(ArrowWidth), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double ArrowWidth
@@ -200,7 +191,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty ArrowHeightProperty =
-            DependencyProperty.Register("ArrowHeight", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(ArrowHeight), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double ArrowHeight
@@ -210,7 +201,7 @@ namespace MordhauHud.CircleMenu
         }
 
         public static readonly DependencyProperty ArrowRadiusProperty =
-            DependencyProperty.Register("ArrowRadius", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.Register(nameof(ArrowRadius), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double ArrowRadius
@@ -220,7 +211,7 @@ namespace MordhauHud.CircleMenu
         }
 
         protected static readonly DependencyPropertyKey AngleDeltaPropertyKey =
-            DependencyProperty.RegisterReadOnly("AngleDelta", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.RegisterReadOnly(nameof(AngleDelta), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(200.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static readonly DependencyProperty AngleDeltaProperty = AngleDeltaPropertyKey.DependencyProperty;
@@ -232,7 +223,7 @@ namespace MordhauHud.CircleMenu
         }
 
         protected static readonly DependencyPropertyKey StartAnglePropertyKey =
-            DependencyProperty.RegisterReadOnly("StartAngle", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.RegisterReadOnly(nameof(StartAngle), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static readonly DependencyProperty StartAngleProperty = StartAnglePropertyKey.DependencyProperty;
@@ -244,7 +235,7 @@ namespace MordhauHud.CircleMenu
         }
 
         protected static readonly DependencyPropertyKey RotationPropertyKey =
-            DependencyProperty.RegisterReadOnly("Rotation", typeof(double), typeof(CircleMenuItem),
+            DependencyProperty.RegisterReadOnly(nameof(Rotation), typeof(double), typeof(CircleMenuItem),
             new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static readonly DependencyProperty RotationProperty = RotationPropertyKey.DependencyProperty;
@@ -262,8 +253,7 @@ namespace MordhauHud.CircleMenu
 
         private static void UpdateItemRendering(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var item = d as CircleMenuItem;
-            if (item != null)
+            if (d is CircleMenuItem item)
             {
                 var angleDelta = 360.0 / item.Count;
                 var angleShift = item.HalfShifted ? -angleDelta / 2 : 0;

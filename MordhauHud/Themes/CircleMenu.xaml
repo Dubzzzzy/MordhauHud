@@ -7,7 +7,7 @@
         <Style.Triggers>
             <Trigger Property="IsOpen" Value="True">
 
-                <!-- CircleMenu openning animation -->
+                <!-- CircleMenu opening animation -->
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
@@ -55,7 +55,7 @@
         <Setter Property="RenderTransform">
             <Setter.Value>
                 <TransformGroup>
-                    <ScaleTransform CenterX="150" CenterY="150" ScaleX="0.3" ScaleY="0.3"/>
+                    <ScaleTransform CenterX="200" CenterY="200" ScaleX="0.3" ScaleY="0.3"/>
                 </TransformGroup>
             </Setter.Value>
         </Setter>
@@ -70,7 +70,7 @@
                         <!-- CircleMenu background -->
                         <Ellipse Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
 
-                        <!-- Content repitition (for items around) -->
+                        <!-- Content repetition (for items around) -->
                         <ItemsControl ItemsSource="{TemplateBinding Content}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>

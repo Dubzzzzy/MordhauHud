@@ -11,18 +11,18 @@ namespace MordhauHud.Converters
         {
             if (values.Length != 6)
             {
-                throw new ArgumentException("CircleMenuItemToContentPosition converter needs 6 values (double angle, double centerX, double centerY, double contentWidth, double contentHeight, double contentRadius) !", "values");
+                throw new ArgumentException($"{nameof(CircleMenuItemToContentPosition)} converter needs 6 values (double angle, double centerX, double centerY, double contentWidth, double contentHeight, double contentRadius) !", nameof(values));
             }
             if (parameter == null)
             {
-                throw new ArgumentNullException("parameter", "CircleMenuItemToContentPosition converter needs the parameter (string axis) !");
+                throw new ArgumentNullException(nameof(parameter), $"{nameof(CircleMenuItemToContentPosition)} converter needs the parameter (string axis) !");
             }
 
             var axis = (string)parameter;
 
             if (axis != "X" && axis != "Y")
             {
-                throw new ArgumentException("CircleMenuItemToContentPosition parameter needs to be 'X' or 'Y' !", "parameter");
+                throw new ArgumentException($"{nameof(CircleMenuItemToContentPosition)} parameter needs to be 'X' or 'Y' !", nameof(parameter));
             }
 
             var angle = (double)values[0];
@@ -44,7 +44,7 @@ namespace MordhauHud.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            throw new InvalidOperationException("CircleMenuItemToContentPosition is a One-Way converter only !");
+            throw new InvalidOperationException($"{nameof(CircleMenuItemToContentPosition)} is a One-Way converter only !");
         }
 
         private static Point ComputeCartesianCoordinate(Point center, double angle, double radius)

@@ -1,16 +1,22 @@
 ﻿using System;
 
-namespace MordhauHud
+namespace MordhauHud.Commands
 {
     public class Command : ICommand
     {
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public Action Action { get; set; }
+        private readonly Action _action;
+
+        public Command(string name, Action action)
+        {
+            Name = name;
+            _action = action;
+        }
 
         public void Execute()
         {
-            Action?.Invoke();
+            _action?.Invoke();
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 
 namespace MordhauHud
 {
@@ -15,14 +13,8 @@ namespace MordhauHud
             ProcessWindowTitle = processWindowTitle;
             Handle = WinApi.FindWindow(processWindowTitle);
         }
-        
-        public Rect Rect
-        {
-            get
-            {
-                WinApi.GetWindowRect(Handle, out var rect);
-                return rect;
-            }
-        }
+
+        public Rect Rect => 
+            WinApi.GetWindowRect(Handle);
     }
 }

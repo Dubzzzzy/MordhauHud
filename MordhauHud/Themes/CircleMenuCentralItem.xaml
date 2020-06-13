@@ -6,18 +6,12 @@
 
         <Style.Triggers>
 
-            <!-- CircleMenuCentralItem style when overed -->
+            <!-- CircleMenuCentralItem style when hovered -->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="#FF5A2617"/>
-                <Setter Property="Background" Value="#AF5A2617"/>
+                <Setter Property="BorderBrush" Value="#A0332100"/>
+                <Setter Property="Background" Value="#9F998766"/>
                 <Setter Property="Panel.ZIndex" Value="10"/>
                 <Setter Property="FontSize" Value="16"/>
-            </Trigger>
-
-            <!-- CircleMenuCentralItem style when disabled -->
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="#F3F3F3"/>
-                <Setter Property="Foreground" Value="#AFAFAF"/>
             </Trigger>
 
         </Style.Triggers>
